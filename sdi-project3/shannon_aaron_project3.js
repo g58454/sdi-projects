@@ -69,8 +69,38 @@ var battleDamage = function(){
     }
 }
 
+/*This is a function that will use a predetermined array and will tell you how many 
+enemies the player will have fought on the level difficulty*/
+
+var enemyCount = function(){
+    
+    if (levelDifficulty === "Easy") {
+        var enemyCount = [17,27,59];//code
+        var x = enemyCount.splice(2,1);
+        alert("You managed to defeat " + x + ", before dying.");
+    }else{
+        if (levelDifficulty === "Medium") {
+            //code
+            var enemyCount = [17,27,59];//code
+            var x = enemyCount.splice(1,1);
+            alert("You managed to defeat " + x + ", before dying.");
+        }else{
+            if (levelDifficulty === "Hard") {
+                //code
+                var enemyCount = [17,27,59];//code
+                var x = enemyCount.splice(0,1);
+                alert("You managed to defeat " + x + ", before dying.");
+            }else{
+            
+            }  
+        }
+    }
+}
+
+
 
 
 //Calling functions in proper order with the proper arguments
 levelEasy(levelDifficulty);
 battleDamage(lifeMeter);
+enemyCount(levelDifficulty);
