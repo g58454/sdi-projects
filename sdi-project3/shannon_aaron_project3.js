@@ -8,9 +8,10 @@
 
 var levelName = "Grown Over";
 var lifeMeter = 100;
-var levelDifficulty = prompt("What Level do you want?\nEasy, Medium, or Hard?");
-var playerDead = false;
-
+var playerStart = false;
+var enemyCount = 0;
+var returnedValue = new Array();
+var playerStart = confirm("Are you ready to start?");
 
 
 //Defining function to be called later
@@ -18,10 +19,26 @@ var playerDead = false;
 depending on the input from the user
 */
 
+var startFunction = function (){
+    if (playerStart != false) {
+        //code
+        alert("You're ready do go!");
+        return playerStart;
+    }else{
+        for (var lifeCount = 3; playerStart === false; lifeCount--) {
+        //code
+         playerStart = confirm("Are you sure?")
+        }
+    }
+    
+}
+
+
 var levelEasy = function(){
     if (levelDifficulty === "Easy") {
         //code
         console.log("You chose " + levelDifficulty);
+        return levelDifficulty;
     }else{
         levelMedium(levelDifficulty);
     }
@@ -36,6 +53,7 @@ var levelMedium = function(){
     if (levelDifficulty === "Medium") {
         //code
         console.log("You chose " + levelDifficulty);
+        return levelDifficulty;
     }else{
         levelHard(levelDifficulty);
     }
@@ -47,8 +65,10 @@ var levelHard = function(){
     if (levelDifficulty === "Hard") {
         //code
         console.log("You chose " + levelDifficulty);
+        return levelDifficulty;
     }else{
         alert("You must be a scardy cat");
+        return levelDifficulty = ("Didn't pick a level!")
     }
 }
 
@@ -64,6 +84,7 @@ var battleDamage = function(){
             //code
             console.log("Your health is now " + lifeMeter);
         }
+            return lifeMeter = 0;
     }else{
         console.log("Go home!")
     }
@@ -77,30 +98,45 @@ var enemyCount = function(){
     if (levelDifficulty === "Easy") {
         var enemyCount = [17,27,59];//code
         var x = enemyCount.splice(2,1);
-        alert("You managed to defeat " + x + ", before dying.");
+        return levelDifficulty = x;
     }else{
         if (levelDifficulty === "Medium") {
             //code
             var enemyCount = [17,27,59];//code
             var x = enemyCount.splice(1,1);
-            alert("You managed to defeat " + x + ", before dying.");
+            return levelDifficulty = x;
         }else{
             if (levelDifficulty === "Hard") {
                 //code
                 var enemyCount = [17,27,59];//code
                 var x = enemyCount.splice(0,1);
-                alert("You managed to defeat " + x + ", before dying.");
+                return levelDifficulty = x;
             }else{
-            
+                return levelDifficulty = 0;
             }  
         }
     }
 }
 
 
-
-
 //Calling functions in proper order with the proper arguments
+
+startFunction(playerStart);
+
+var levelDifficulty = prompt("What Level do you want?\nEasy, Medium, or Hard?");
+
 levelEasy(levelDifficulty);
+returnedValue[0]= levelDifficulty;
+
+
 battleDamage(lifeMeter);
+returnedValue[1]= lifeMeter;
+
+
 enemyCount(levelDifficulty);
+returnedValue[2]= levelDifficulty;
+
+alert("You chose " + returnedValue.splice(0,1) + "\nYou're health is at " + returnedValue.splice(0,1) + "\nYou fought " + returnedValue.splice(0,1) + " enemies");
+
+//alert(lifeMeter);
+//alert(levelDifficulty);
